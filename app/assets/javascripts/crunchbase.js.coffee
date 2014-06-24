@@ -15,12 +15,9 @@ class @CrunchBase
         dataType: "JSON"
         method: 'GET'
       ).success((json) ->
-        console.log(json.message)
         $(containerSelector).html(json.html)
         $('body').modalmanager('loading')
       ).error (xhr) ->
-        console.log "error"
-        console.log xhr.responseText
         tmpData = jQuery.parseJSON(xhr.responseText)
         $('body').modalmanager('loading')
       false
@@ -38,12 +35,9 @@ class @CrunchBase
         method: 'GET'
       ).success((json) ->
         $('body').modalmanager('loading')
-        console.log(json.message)
         _modal.html(json.html)
         _modal.modal()
       ).error (xhr) ->
-        console.log "error"
-        console.log xhr.message
         tmpData = jQuery.parseJSON(xhr.message)
         $('body').modalmanager('loading')
       false

@@ -9,6 +9,8 @@ Ruby 2.1.1 and Ruby On Rails 4.1.1
 ## Installation
 
 ```console
+git clone https://github.com/nakedmoon/priori_data_crunchbase
+cd priori_data_crunchbase
 bundle 'install'
 ```
 
