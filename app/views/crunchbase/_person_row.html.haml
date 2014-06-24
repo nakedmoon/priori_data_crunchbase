@@ -1,0 +1,9 @@
+%tr
+  %td
+    =record.title
+  %td
+    =record.first_name
+  %td
+    =record.last_name
+  %td
+    =link_to(content_tag(:span, '', :class => 'glyphicon glyphicon-user'), record.crunchbase_link, :target => '_blank')

@@ -1,0 +1,51 @@
+.modal-header
+  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+  %h3 Product: #{@record.name}
+.modal-body
+  %ul.nav.nav-tabs
+    %li
+      %a{"data-toggle" => "tab", href: "#tab1"} Logo
+    %li.active
+      %a{"data-toggle" => "tab", href: "#tab2"} Description
+    %li
+      %a{"data-toggle" => "tab", href: "#tab3"} News
+    %li
+      %a{"data-toggle" => "tab", href: "#tab4"} Url
+  .tab-content
+    #tab1.tab-pane
+      %div.container-fluid
+        %div.row
+          %div.col-md-12
+            %row
+              -logo = @record.main_image ? image_tag(@record.main_image) : @record.name
+              =link_to(logo, @record.homepage_url || '#', :target => '_blank')
+    #tab2.tab-pane.active
+      %div.container-fluid
+        %div.row
+          %div.col-md-12
+            %p
+              =@record.description
+    #tab3.tab-pane
+      %div.container-fluid
+        %div.row
+          %div.col-md-12
+            %table.table.table-striped.table-vcenter
+              %thead
+                %tr
+                  %th
+                    Title
+                  %th
+                    First Name
+                  %th
+                    Last Name
+                  %th
+                    Link
+              %tbody
+                =render :partial => 'press_news_row', :collection => @record.news, :as => :record
+    #tab4.tab-pane
+      %div.container-fluid
+        %div.row
+          %div.col-md-12
+            =@record.crunchbase_link
+.modal-footer
+  %button.btn{"data-dismiss" => "modal", type: "button"} Close

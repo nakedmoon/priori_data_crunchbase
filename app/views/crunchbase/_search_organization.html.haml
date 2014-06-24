@@ -1,0 +1,24 @@
+%h2
+  Organizations
+%table.table.table-striped.table-vcenter
+  %thead
+    %tr
+      %th
+        Image
+      %th
+        Name
+      %th
+        Description
+      %th
+        Link
+  %tbody
+    =render :partial => 'record_row', :collection => @records[:organization], :as => :record
+
+%ul.pager
+  =pagination_prev(@page, :organization)
+  =pagination_next(@page, :organization)
+
+
+:coffee
+  CrunchBase.bindPaginationLinks('organizations')
+  CrunchBase.bindShowItems('organizations')

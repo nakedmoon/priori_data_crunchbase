@@ -1,0 +1,24 @@
+%h2
+  Products
+%table.table.table-striped.table-vcenter
+  %thead
+    %tr
+      %th
+        Image
+      %th
+        Name
+      %th
+        Description
+      %th
+        Link
+  %tbody
+    =render :partial => 'record_row', :collection => @records[:product], :as => :record
+
+%ul.pager
+  =pagination_prev(@page, :product)
+  =pagination_next(@page, :product)
+
+
+:coffee
+  CrunchBase.bindPaginationLinks('products')
+  CrunchBase.bindShowItems('products')

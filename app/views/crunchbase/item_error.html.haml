@@ -1,0 +1,8 @@
+.modal-header
+  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+  %h3 Error
+.modal-body
+  %div.alert.alert-warning
+    Unable to fetch item #{@item_type} with permalink #{@permalink}
+.modal-footer
+  %button.btn{"data-dismiss" => "modal", type: "button"} Close

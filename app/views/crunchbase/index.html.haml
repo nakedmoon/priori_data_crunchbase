@@ -1,0 +1,25 @@
+%div#crunchbase_search_container
+  = simple_form_for(@search, :url => search_path, :html => {:id => 'crunchbase_search'} ) do |f|
+    = f.input :search_string, :placeholder => 'Search Organizations/Products'
+    = f.submit 'Search', :class => 'btn btn-default'
+
+
+  :coffee
+    $("#crunchbase_search").submit ->
+        valuesToSubmit = $(this).serialize()
+        $('body').modalmanager('loading')
+        $.ajax(
+          url: $(this).attr("action")
+          data: valuesToSubmit
+          dataType: "JSON"
+          method: $(this).attr("method")
+        ).success((json) ->
+          console.log(json.message)
+          $('#crunchbase_search_container').html(json.html)
+          $('body').modalmanager('loading')
+        ).error (xhr) ->
+          console.log "error"
+          console.log xhr.responseText
+          tmpData = jQuery.parseJSON(xhr.responseText)
+          $('body').modalmanager('loading')
+        false

@@ -1,0 +1,9 @@
+=hidden_field_tag(:search_string, @search.search_string, :name => 'search[search_string]', :id => 'search_search_string')
+%div#organizations_container
+  =render :partial => 'search_organization'
+%div#products_container
+  =render :partial => 'search_product'
+
+
+.modal.fade{:id => 'row-modal', :tabindex => "-1", "data-width" => '800', "data-height" => '400'}
+
